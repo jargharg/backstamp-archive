@@ -10,7 +10,6 @@ Staging: <a href="https://jargharg.github.io/backstamp-archive/">jargharg.github
 ## Built With
 * HTML5
 * CSS3
-* Javascript
-* JQuery
+* Javascript ES5
+* JQuery 1.10.2
 
-Easy...
