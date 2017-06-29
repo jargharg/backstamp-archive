@@ -1,41 +1,98 @@
 var backstampCSV, bsImageArray,yearArray, $yearContainer, years, currentYear, filter;
-bsImageArray = [["Year","Filename","Description","Type"],["1985","1985_sponge","Spongeware","S"],["1986","1986-1989_sponge","Spongeware","S"],["1987","1986-1989_sponge","Spongeware","S"],["1988","1986-1989_sponge","Spongeware","S"],["1989","1986-1989_sponge","Spongeware","S"],["1990","1990_sponge","Spongeware","S"],["1991","1991_sponge","Spongeware","S"],["1992","1992_sponge","Spongeware","S"],["1993","1993_sponge","Spongeware","S"],["1994","1994_sponge","Spongeware","S"],["1995","1995_sponge","Spongeware","S"],["1996","1996_sponge","Spongeware","S"],["1997","1997_sponge","Spongeware","S"],["1998","1998_countryliving","Country Living Anniversary","X"],["1998","1998_sponge","Spongeware","S"],["1999","1999_sponge","Spongeware","S"],["2000","2000_sponge","Spongeware","S"],["2001","2001_sponge","Spongeware","S"],["2002","2002_lovekisses","Love & Kisses","L"],["2002","2002_sponge1","Spongeware","S"],["2002","2002_sponge2","Spongeware","S"],["2003","2003_circus","Circus","L"],["2003","2003_menatwork","Men at Work","L"],["2003","2003_toys","Toys","L"],["2003","2003_sponge","Spongeware","S"],["2004","2004_catsdogs","Cats & Dogs","L"],["2004","2004_starrytoast","Starry Toast","L"],["2004","2004_sponge","Spongeware","S"],["2005","2005_sponge","Spongeware","S"],["2006","2006_sponge1","Spongeware","S"],["2006","2006_sponge2","Spongeware","S"],["2006","2006_sponge4","Spongeware","S"],["2007","2007_birds","Birds","L"],["2007","2007_sponge","Spongeware","S"],["2008","2008_sponge","Spongeware","S"],["2009","2009_gymkhana","Gymkhana","X"],["2009","2009_whitetoast","White Toast","L"],["2009","2009_sponge","Spongeware","S"],["2010","2010_hfh","Help for Heroes","X"],["2010","2010_sponge1","Spongeware","S"],["2010","2010_sponge2","Spongeware Cookware","S"],["2011","2011_willkate","William and Kate's Marriage","L"],["2011","2011_sponge1","Spongeware","S"],["2011","2011_sponge2","Kitchenware","S"],["2011","2011_sponge7","Spongeware","S"],["2012","2012_60years","60 Years a Queen","L"],["2012","2012_sponge1","Spongeware","S"],["2012","2012_sponge3","Spongeware","S"],["2013","2013_coronation","60th Coronation Anniversary","L"],["2013","2013_skyline","Skyline","L"],["2013","2013_sponge1","Spongeware","S"],["2013","2013_sponge4","Spongeware","S"],["2014","2014_dogs","Dogs","L"],["2014","2014_williamson","Williamson Tea","X"],["2014","2014_yitc","Year in the Country","L"],["2014","2014_sponge1","Spongeware","S"],["2014","2014_sponge4","Spongeware","S"],["2015","2015_blackdresser","Black Dresser","L"],["2015","2015_fox","Fox and Leaves","L"],["2015","2015_partridge","Partridge","L"],["2015","2015_tam","Toast & Marmalade","L"],["2015","2015_sponge1","Spongeware","S"],["2016","2016_birds","Birds","L"],["2016","2016_chickens","Lots of Chickens","L"],["2016","2016_crab","Crab","L"],["2016","2016_dogs","Dogs","L"],["2016","2016_flowers","Flowers","L"],["2016","2016_gamebirds","Game Birds","L"],["2016","2016_owls","Owls","L"],["2016","2016_owls1","Owls","L"],["2016","2016_RHS","Chelsea Flower Show","X"],["2016","2016_3kings","Three Kings","L"],["2016","2016_beardedtit","Bearded Tit","L"],["2016","2016_sponge1","Spongeware","S"],["2017","2017_sponge","Spongeware","S"]];
+bsImageArray = [
+{year: 1985, filename: "1985_sponge", description: "Spongeware", type: "S"}, 
+{year: 1986, filename: "1986-1989_sponge", description: "Spongeware", type: "S"}, 
+{year: 1987, filename: "1986-1989_sponge", description: "Spongeware", type: "S"}, 
+{year: 1988, filename: "1986-1989_sponge", description: "Spongeware", type: "S"}, 
+{year: 1989, filename: "1986-1989_sponge", description: "Spongeware", type: "S"}, 
+{year: 1990, filename: "1990_sponge", description: "Spongeware", type: "S"}, 
+{year: 1991, filename: "1991_sponge", description: "Spongeware", type: "S"}, 
+{year: 1992, filename: "1992_sponge", description: "Spongeware", type: "S"}, 
+{year: 1993, filename: "1993_sponge", description: "Spongeware", type: "S"}, 
+{year: 1994, filename: "1994_sponge", description: "Spongeware", type: "S"}, 
+{year: 1995, filename: "1995_sponge", description: "Spongeware", type: "S"}, 
+{year: 1996, filename: "1996_sponge", description: "Spongeware", type: "S"}, 
+{year: 1997, filename: "1997_sponge", description: "Spongeware", type: "S"}, 
+{year: 1998, filename: "1998_countryliving", description: "Country Living Anniversary", type: "X"}, 
+{year: 1998, filename: "1998_sponge", description: "Spongeware", type: "S"}, 
+{year: 1999, filename: "1999_sponge", description: "Spongeware", type: "S"}, 
+{year: 2000, filename: "2000_sponge", description: "Spongeware", type: "S"}, 
+{year: 2001, filename: "2001_sponge", description: "Spongeware", type: "S"}, 
+{year: 2002, filename: "2002_lovekisses", description: "Love & Kisses", type: "L"}, 
+{year: 2002, filename: "2002_sponge1", description: "Spongeware", type: "S"}, 
+{year: 2002, filename: "2002_sponge2", description: "Spongeware", type: "S"}, 
+{year: 2003, filename: "2003_circus", description: "Circus", type: "L"}, 
+{year: 2003, filename: "2003_menatwork", description: "Men at Work", type: "L"}, 
+{year: 2003, filename: "2003_toys", description: "Toys", type: "L"}, 
+{year: 2003, filename: "2003_sponge", description: "Spongeware", type: "S"}, 
+{year: 2004, filename: "2004_catsdogs", description: "Cats & Dogs", type: "L"}, 
+{year: 2004, filename: "2004_starrytoast", description: "Starry Toast", type: "L"}, 
+{year: 2004, filename: "2004_sponge", description: "Spongeware", type: "S"}, 
+{year: 2005, filename: "2005_sponge", description: "Spongeware", type: "S"}, 
+{year: 2006, filename: "2006_sponge1", description: "Spongeware", type: "S"}, 
+{year: 2006, filename: "2006_sponge2", description: "Spongeware", type: "S"}, 
+{year: 2006, filename: "2006_sponge4", description: "Spongeware", type: "S"}, 
+{year: 2007, filename: "2007_birds", description: "Birds", type: "L"}, 
+{year: 2007, filename: "2007_sponge", description: "Spongeware", type: "S"}, 
+{year: 2008, filename: "2008_sponge", description: "Spongeware", type: "S"}, 
+{year: 2009, filename: "2009_gymkhana", description: "Gymkhana", type: "X"}, 
+{year: 2009, filename: "2009_whitetoast", description: "White Toast", type: "L"}, 
+{year: 2009, filename: "2009_sponge", description: "Spongeware", type: "S"}, 
+{year: 2010, filename: "2010_hfh", description: "Help for Heroes", type: "X"}, 
+{year: 2010, filename: "2010_sponge1", description: "Spongeware", type: "S"}, 
+{year: 2010, filename: "2010_sponge2", description: "Spongeware Cookware", type: "S"}, 
+{year: 2011, filename: "2011_willkate", description: "William and Kate's Marriage", type: "L"}, 
+{year: 2011, filename: "2011_sponge1", description: "Spongeware", type: "S"}, 
+{year: 2011, filename: "2011_sponge2", description: "Kitchenware", type: "S"}, 
+{year: 2011, filename: "2011_sponge7", description: "Spongeware", type: "S"}, 
+{year: 2012, filename: "2012_60years", description: "60 Years a Queen", type: "L"}, 
+{year: 2012, filename: "2012_sponge1", description: "Spongeware", type: "S"}, 
+{year: 2012, filename: "2012_sponge3", description: "Spongeware", type: "S"}, 
+{year: 2013, filename: "2013_coronation", description: "60th Coronation Anniversary", type: "L"}, 
+{year: 2013, filename: "2013_skyline", description: "Skyline", type: "L"}, 
+{year: 2013, filename: "2013_sponge1", description: "Spongeware", type: "S"}, 
+{year: 2013, filename: "2013_sponge4", description: "Spongeware", type: "S"}, 
+{year: 2014, filename: "2014_dogs", description: "Dogs", type: "L"}, 
+{year: 2014, filename: "2014_williamson", description: "Williamson Tea", type: "X"}, 
+{year: 2014, filename: "2014_yitc", description: "Year in the Country", type: "L"}, 
+{year: 2014, filename: "2014_sponge1", description: "Spongeware", type: "S"}, 
+{year: 2014, filename: "2014_sponge4", description: "Spongeware", type: "S"}, 
+{year: 2015, filename: "2015_blackdresser", description: "Black Dresser", type: "L"}, 
+{year: 2015, filename: "2015_fox", description: "Fox and Leaves", type: "L"}, 
+{year: 2015, filename: "2015_partridge", description: "Partridge", type: "L"}, 
+{year: 2015, filename: "2015_tam", description: "Toast & Marmalade", type: "L"}, 
+{year: 2015, filename: "2015_sponge1", description: "Spongeware", type: "S"}, 
+{year: 2016, filename: "2016_birds", description: "Birds", type: "L"}, 
+{year: 2016, filename: "2016_chickens", description: "Lots of Chickens", type: "L"}, 
+{year: 2016, filename: "2016_crab", description: "Crab", type: "L"}, 
+{year: 2016, filename: "2016_dogs", description: "Dogs", type: "L"}, 
+{year: 2016, filename: "2016_flowers", description: "Flowers", type: "L"}, 
+{year: 2016, filename: "2016_gamebirds", description: "Game Birds", type: "L"}, 
+{year: 2016, filename: "2016_owls", description: "Owls", type: "L"}, 
+{year: 2016, filename: "2016_owls1", description: "Owls", type: "L"}, 
+{year: 2016, filename: "2016_RHS", description: "Chelsea Flower Show", type: "X"}, 
+{year: 2016, filename: "2016_3kings", description: "Three Kings", type: "L"}, 
+{year: 2016, filename: "2016_beardedtit", description: "Bearded Tit", type: "L"}, 
+{year: 2016, filename: "2016_sponge1", description: "Spongeware", type: "S"}, 
+{year: 2017, filename: "2017_sponge", description: "Spongeware", type: "S"}
+];
 yearArray = [];
 $yearContainer = $("#yearContainer");
 
-$(document).ready(function(){
-	initialiseBSApp();
-});
-
-$(window).resize(function(){
-	reloadGrid();
-});
-
-function initialiseBSApp(){
-	bsImageArray = sortArray(bsImageArray);
-	years = countYears(bsImageArray);
-	createGrid();
-	loadOptions();
-	$("button[data-filterType='S']").click();
-	addDetailContainers();
-	navigateCells();
-	IERefresh();
-}
-
 // return input sorted with S first, L middle and X last - input array must be ordered by year
 function sortArray(arrayToSort) {
-	currentYear = arrayToSort[0][0];
+	currentYear = arrayToSort[0].year;
 	var sortedArray = [];
 	var sLocation = -1;
 	var lLocation = 0;
 	var i=0;
 	while (i<arrayToSort.length){
-		if(arrayToSort[i][0]==currentYear){
-			if (arrayToSort[i][3] === "S") {
+		if(arrayToSort[i].year === currentYear){
+			if (arrayToSort[i].type === "S") {
 				sortedArray.splice(sLocation+1,0,arrayToSort[i]);
 				sLocation++;
 				lLocation++;
-			} else if (arrayToSort[i][3] === "L") {
+			} else if (arrayToSort[i].type === "L") {
 				sortedArray.splice(lLocation,0,arrayToSort[i]);
 				lLocation++;
 			} else {
@@ -43,7 +100,7 @@ function sortArray(arrayToSort) {
 			}
 			i++;
 		} else { // updates currentYear and S/L locations if current array record is in a later year, then runs sorting again on the record
-			currentYear = arrayToSort[i][0];
+			currentYear = arrayToSort[i].year;
 			sLocation = i-1;
 			lLocation = i;
 		}
@@ -53,11 +110,11 @@ function sortArray(arrayToSort) {
 
 // return number of unique years in array
 function countYears(arrayToCount) {
-	return arrayToCount[arrayToCount.length-1][0] - arrayToCount[1][0] + 1;
+	return arrayToCount[arrayToCount.length-1].year - arrayToCount[0].year + 1;
 }
 
+// create yearCells and imgCells and append to yearContainer
 function createGrid(){
-	//creates yearCells and stores in array
 	for (i = 0; i < years; i++) {
 		var $newYearCell = $("<li />")
 		.addClass("gridCell yearCell visYearCell")
@@ -65,7 +122,7 @@ function createGrid(){
 			$("<text />")
 			.html(1985+i+"<i class='icon-right-marker icon-large'></i>")
 			.addClass("yearNum centreCell")
-			);
+		);
 		yearArray.push($newYearCell);
 
 		currentYear = 1985+i;
@@ -73,7 +130,7 @@ function createGrid(){
 
 		// !!! can this be optimised? e.g. set new start point from array, exit when new year
 		for (j = 0; j < bsImageArray.length; j++) { // puts all relevant images into current year backstamp array
-			(bsImageArray[j][0] == currentYear) ? currentYearBsArray.push(bsImageArray[j]) : null;
+			if (bsImageArray[j].year == currentYear) currentYearBsArray.push(bsImageArray[j]);
 		}
 
 		currentYearBsArray.forEach(function(bsCell){
@@ -81,18 +138,18 @@ function createGrid(){
 			.addClass("gridCell imgCell")
 			.attr({
 				"data-display": 1,
-				"data-img": bsCell[1],
-				"data-bsType": bsCell[3],
-				"data-desc": bsCell[2]
+				"data-img": bsCell.filename,
+				"data-bsType": bsCell.type,
+				"data-desc": bsCell.description
 			})
 			.append(
 				$("<img />")
 				.addClass("bsImg")
 				.attr({
-					src: "https://www.emmabridgewater.co.uk/content/ebiz/eb/images/backstamps/s/"+bsCell[1]+"_s.jpg",
-					alt: bsCell[2]
+					src: "https://www.emmabridgewater.co.uk/content/ebiz/eb/images/backstamps/s/"+bsCell.filename+"_s.jpg",
+					alt: bsCell.description
 				})
-				);
+			);
 			$newYearCell.push($newImgCell); // adds image cell to array with current year window at the start
 		});
 	}
@@ -105,6 +162,83 @@ function createGrid(){
 		}
 	})
 	$yearContainer.after($("<div id = 'detailHeight'></div>")); // allows us to get height of detailContainerE
+}
+
+// load detailContainers and spacerCells
+function addDetailContainers(){
+	$(".detailContainer").remove();
+	$(".spacerCell").parent().remove();
+
+	$(".activeBsImg").removeClass("activeBsImg");
+	$gridCells = $(".gridCell");
+	for(i=0; i<$gridCells.length; i++) {
+		var $currentCell = $($gridCells[i]);
+		if($yearContainer.offset().left+$yearContainer.width()-$currentCell.offset().left-$currentCell.width() < 30 || i === $gridCells.length-1){
+			if($currentCell.hasClass("visYearCell")) {
+				$currentCell.before(
+					$currentCell = $("<div />")
+					.addClass("gridCell")
+					.append(
+						$("<div />")
+						.addClass("spacerCell centreCell")
+						)
+					)
+			}
+			$currentCell.after(
+				$("<div />")
+				.addClass("detailContainer")
+				)
+		}
+	}
+	// square cells
+	$(".gridCell").height($(".gridCell").width());
+}
+
+// select next or previous imgCell based on input "L" or "R"
+function navigateCells(direction){
+	var $parentCell = $(".activeBsImg").parent();
+	(direction === "L") ? $parentCell.prevAll(".imgCell:visible").first().click() : $parentCell.nextAll(".imgCell:visible").first().click();
+}
+
+// navigate cells using arrow keys
+function addKBNavigation(){
+	$(document).keydown(function(key){
+		if(key.which == 37) {
+			navigateCells("L");
+		} else if (key.which == 39) {
+			navigateCells("R");
+		}
+	})
+}
+
+// handle use of top filters
+function loadOptions(){
+	$(".filterOption").click(function(){
+		$selectedFilter = $(this);
+
+		if ($selectedFilter.hasClass("filterActive")) { // if active filter button has been clicked on, remove filters
+			filter = null;
+			$selectedFilter.removeClass("filterActive");
+			$("#viewAllButton").addClass("filterActive");
+		} else { // checks which filter button has been clicked on
+			filter = $selectedFilter.attr("data-filterType"); 
+			$(".filterActive").removeClass("filterActive");
+			$selectedFilter.addClass("filterActive");
+		}
+
+		// fades out yearContainer while cells are shown/hidden
+		$("#yearContainer").css("opacity",0).delay(110).queue(function(next){
+			if (filter) { // if a filter has been selected, checks if imgCell matches the filter type; displays cell if so, hides cell if not
+				$(".imgCell[data-bsType="+filter+"]").attr("data-display",1);
+				$(".imgCell[data-bsType!="+filter+"]").hide().attr("data-display",0);
+			} else { // if view all clicked, set all cells to be displayed
+				$(".imgCell").attr("data-display",1);
+			}
+			reloadGrid();
+			$("#yearContainer").css("opacity",1);
+			next();
+		});
+	})
 }
 
 // show/hide imgCells of selected year based on filter
@@ -148,7 +282,7 @@ function clickImg(img){
 			.append(
 				$("<img>")
 				.attr("src","https://www.emmabridgewater.co.uk/content/ebiz/eb/images/backstamps/"+$(this).attr("data-img")+".jpg")
-			)
+			);
 
 			$bsDataDetail = $("<div />")
 			.addClass("bsDataDetail")
@@ -156,12 +290,12 @@ function clickImg(img){
 				$("<div />")
 				.addClass("bsYear")
 				.html($(this).attr("data-img").substring(0,4))
-				)
+			)
 			.append(
 				$("<div />")
 				.addClass("bsName")
 				.html($(this).attr("data-desc"))
-				)
+			);
 
 			// expand next detailContainer and append content
 			$(this).nextAll(".detailContainer").first().addClass("detailContainerE")
@@ -169,129 +303,79 @@ function clickImg(img){
 			.append($bsDataDetail.hide().fadeIn(200))
 			.append($bsImgDetail.hide().fadeIn(200));
 
-			if ($(window).width() < 600) {
-				$bsImgDetail.insertBefore($bsDataDetail);
-			}
+			// re-arrange details for mobile screens
+			if ($(window).width() < 600) $bsImgDetail.insertBefore($bsDataDetail);
 
 			$(this).children().addClass("activeBsImg");
 
 			// scroll to top of selected cell
-			var currentBsImgTop = $(".activeBsImg").offset().top-8;
+			var currentBsImgTop = $(this).children().offset().top-8;
 			var scrollPoint = (prevBsImgTop > currentBsImgTop || prevBsImgTop === null) ? currentBsImgTop : currentBsImgTop - $("#detailHeight").height();
 			$('html, body').clearQueue().animate({scrollTop: scrollPoint}, 200, 'swing');
 		}
 	}
 }
 
-function addNavigation(){
-	$newNav = $("<div />")
-		.addClass("detailNav")
-		.append(
-			$("<span />")
-			.addClass("detailBtn detailBtnNav")
-			.html("<i class='icon-left-marker icon-large'></i>")
-			.click(function(){navigateCells("L")})
-			)
-		.append(
-			$("<span />")
-			.addClass("detailBtn detailBtnNav")
-			.html("<i class='icon-right-marker icon-large'></i>")
-			.click(function(){navigateCells("R")})
-			)
-		.append(
-			$("<span />")
-			.addClass("detailBtn detailBtnClose")
-			.html("<i class='icon-close icon-large'></i>")
-			.click(hideDetails)
-			)
-	return $newNav;
-}
-
-// load detailContainers and spacerCells
-function addDetailContainers(){
-	$(".detailContainer").remove();
-	$(".spacerCell").parent().remove();
-
-	$(".activeBsImg").removeClass("activeBsImg");
-	$gridCells = $(".gridCell");
-	for(i=0; i<$gridCells.length; i++) {
-		var $currentCell = $($gridCells[i]);
-		if($yearContainer.offset().left+$yearContainer.width()-$currentCell.offset().left-$currentCell.width() < 30 || i === $gridCells.length-1){
-			if($currentCell.hasClass("visYearCell")) {
-				$currentCell.before(
-					$currentCell = $("<div />")
-					.addClass("gridCell")
-					.append(
-						$("<div />")
-						.addClass("spacerCell centreCell")
-						)
-					)
-			}
-			$currentCell.after(
-				$("<div />")
-				.addClass("detailContainer")
-				)
-		}
-	}
-	// square cells
-	$(".gridCell").height($(".gridCell").width());
-}
-
-// hides expanded detailContainer and un-highlights active img
+// hide expanded detailContainer and un-highlights active img
 function hideDetails(){
 	$(".detailContainerE").removeClass("detailContainerE").empty();
 	$(".activeBsImg").removeClass("activeBsImg");
 }
 
-// selects next or previous imgCell based on input "L" or "R"
-function navigateCells(direction){
-	var $parentCell = $(".activeBsImg").parent();
-	(direction === "L") ? $parentCell.prevAll(".imgCell:visible").first().click() : $parentCell.nextAll(".imgCell:visible").first().click();
+// add navigation buttons to detailContainer
+function addNavigation(){
+	$newNav = $("<div />")
+	.addClass("detailNav")
+	.append(
+		$("<span />")
+		.addClass("detailBtn detailBtnNav")
+		.html("<i class='icon-left-marker icon-large'></i>")
+		.click(function(){navigateCells("L")})
+		)
+	.append(
+		$("<span />")
+		.addClass("detailBtn detailBtnNav")
+		.html("<i class='icon-right-marker icon-large'></i>")
+		.click(function(){navigateCells("R")})
+		)
+	.append(
+		$("<span />")
+		.addClass("detailBtn detailBtnClose")
+		.html("<i class='icon-close icon-large'></i>")
+		.click(hideDetails)
+		)
+	return $newNav;
 }
 
-function loadOptions(){
-	$(".filterOption").click(function(){
-		$selectedFilter = $(this);
-
-		if ($selectedFilter.hasClass("filterActive")) { // if active filter button has been clicked on, remove filters
-			filter = null;
-			$selectedFilter.removeClass("filterActive");
-			$("#viewAllButton").addClass("filterActive");
-		} else { // checks which filter button has been clicked on
-			filter = $selectedFilter.attr("data-filterType"); 
-			$(".filterActive").removeClass("filterActive");
-			$selectedFilter.addClass("filterActive");
-		}
-
-		// fades out yearContainer while cells are shown/hidden
-		$("#yearContainer").css("opacity",0).delay(110).queue(function(next){
-			if (filter) { // if a filter has been selected, checks if imgCell matches the filter type; displays cell if so, hides cell if not
-				$(".imgCell[data-bsType="+filter+"]").attr("data-display",1);
-				$(".imgCell[data-bsType!="+filter+"]").hide().attr("data-display",0);
-			} else { // if view all clicked, set all cells to be displayed
-				$(".imgCell").attr("data-display",1);
-			}
-			reloadGrid();
-			$("#yearContainer").css("opacity",1);
-			next();
-		});
-	})
-
-	$(document).keydown(function(key){
-		if(key.which == 37) {
-			navigateCells("L");
-		} else if (key.which == 39) {
-			navigateCells("R");
-		}
-	})
-}
-
+// re-draw cells and detailContainers
 function reloadGrid(){
 	yearArray.forEach(function(year){ loadImgs(year) });
 	addDetailContainers();
 	$(".spacerCell").css("padding",0);
 }
 
-function IERefresh(){ // Re-draws yearCells in IE to fix alignment issues
-	(navigator.appVersion.indexOf("MSIE") > 0 || navigator.appVersion.indexOf("Trident") > 0) ? reloadGrid(): false;
+// Re-draw yearCells in IE to fix alignment issues
+function IERefresh(){ 
+	if (navigator.appVersion.indexOf("MSIE") > 0 || navigator.appVersion.indexOf("Trident") > 0) reloadGrid();
 }
+
+
+function initialiseBSApp(){
+	bsImageArray = sortArray(bsImageArray);
+	years = countYears(bsImageArray);
+	createGrid();
+	loadOptions();
+	$("button[data-filterType='S']").click();
+	addDetailContainers();
+	addKBNavigation();
+	navigateCells();
+	IERefresh();
+}
+
+$(document).ready(function(){
+	initialiseBSApp();
+});
+
+$(window).resize(function(){
+	reloadGrid();
+});

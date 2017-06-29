@@ -86,30 +86,6 @@ div .row.content-wrapper {
 			background-color: $color-1-d1;
 		}
 	}
-	.viewOptionDiv {
-		display: none;
-		float: right;
-		height: 100%;
-		.viewList {
-			border: none;
-			vertical-align: top;
-			box-shadow: none!important;
-		}
-		.viewOption {
-			cursor: pointer;
-			padding: 0px;
-			min-width: 15px;
-			&:hover {
-				color: $color-1-l2;
-			}
-			&:active {
-				color: $color-1-l1;
-			}
-		}
-		#viewS { font-size: 75%; }
-		#viewM { font-size: 125%; }
-		#viewL { font-size: 175%; }
-	}
 }
 .bsIntroText {
 	text-align: center;

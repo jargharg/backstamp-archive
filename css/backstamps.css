@@ -69,28 +69,6 @@ div .row.content-wrapper {
       border-left: 9px solid white; }
     #bsHeader .filterContainer .filterActive {
       background-color: #5389A1; }
-  #bsHeader .viewOptionDiv {
-    display: none;
-    float: right;
-    height: 100%; }
-    #bsHeader .viewOptionDiv .viewList {
-      border: none;
-      vertical-align: top;
-      box-shadow: none !important; }
-    #bsHeader .viewOptionDiv .viewOption {
-      cursor: pointer;
-      padding: 0px;
-      min-width: 15px; }
-      #bsHeader .viewOptionDiv .viewOption:hover {
-        color: #E1F0F7; }
-      #bsHeader .viewOptionDiv .viewOption:active {
-        color: #B1D3E2; }
-    #bsHeader .viewOptionDiv #viewS {
-      font-size: 75%; }
-    #bsHeader .viewOptionDiv #viewM {
-      font-size: 125%; }
-    #bsHeader .viewOptionDiv #viewL {
-      font-size: 175%; }
 
 .bsIntroText {
   text-align: center;
