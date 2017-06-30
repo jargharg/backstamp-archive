@@ -1,5 +1,4 @@
-var backstampCSV, bsImageArray, yearArray, $yearContainer, years, currentYear, filter
-bsImageArray = [
+var bsImageArray = [
 {year: 1985, filename: "1985_sponge", description: "Spongeware", type: "S"}, 
 {year: 1986, filename: "1986-1989_sponge", description: "Spongeware", type: "S"}, 
 {year: 1987, filename: "1986-1989_sponge", description: "Spongeware", type: "S"}, 
@@ -76,8 +75,12 @@ bsImageArray = [
 {year: 2016, filename: "2016_sponge1", description: "Spongeware", type: "S"}, 
 {year: 2017, filename: "2017_sponge", description: "Spongeware", type: "S"}
 ]
-yearArray = []
-$yearContainer = $("#yearContainer")
+var $yearContainer = $("#yearContainer")
+var bsImageArray
+var yearArray = []
+var years
+var currentYear
+var filter
 
 // return input sorted with S first, L middle and X last - input array must be ordered by year
 function sortArray(arrayToSort) {
