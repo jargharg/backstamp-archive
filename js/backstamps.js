@@ -150,7 +150,7 @@ function createGrid(){
 				$("<img />")
 				.addClass("bsImg")
 				.attr({
-					src: "https://www.emmabridgewater.co.uk/content/ebiz/eb/images/backstamps/s/"+bsCell.filename+"_s.jpg",
+					src: "images/backstamps/s/"+bsCell.filename+"_s.jpg",
 					alt: bsCell.description
 					})
 				)
@@ -285,7 +285,7 @@ function clickImg(img){
 			.addClass("bsImgDetail")
 			.append(
 				$("<img>")
-				.attr("src","https://www.emmabridgewater.co.uk/content/ebiz/eb/images/backstamps/"+$(this).attr("data-img")+".jpg")
+				.attr("src","images/backstamps/"+$(this).attr("data-img")+".jpg")
 				)
 
 			$bsDataDetail = $("<div />")
