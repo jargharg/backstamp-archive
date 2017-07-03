@@ -4,7 +4,7 @@ Web app for exploring the Emma Bridgewater backstamp archive.
 ## Links
 Live: <a href="https://www.emmabridgewater.co.uk/page/backstamparchive">emmabridgewater.co.uk/page/backstamparchive</a>
 
-Staging: <a href="https://jargharg.github.io/backstamp-archive/">jargharg.github.io/backstamp-archive/</a>
+Staging: <a href="http://jarodhargreav.es/backstamp-archive/">jarodhargreav.es/backstamp-archive</a>
 
 ## Built With
 * HTML5
