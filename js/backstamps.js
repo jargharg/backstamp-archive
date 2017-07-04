@@ -201,7 +201,7 @@ function addDetailContainers(){
 // select next or previous imgCell based on input "L" or "R"
 function navigateCells(direction){
 	var $parentCell = $(".activeBsImg").parent()
-	(direction === "L") ? $parentCell.prevAll(".imgCell:visible").first().click() : $parentCell.nextAll(".imgCell:visible").first().click()
+	;(direction === "L") ? $parentCell.prevAll(".imgCell:visible").first().click() : $parentCell.nextAll(".imgCell:visible").first().click()
 }
 
 // navigate cells using arrow keys
@@ -285,6 +285,10 @@ function clickImg(img){
 			.addClass("bsImgDetail")
 			.append(
 				$("<img>")
+				.hide()
+				.load(function(){
+					$(this).fadeIn(200)
+				})
 				.attr("src","images/backstamps/"+$(this).attr("data-img")+".jpg")
 				)
 
