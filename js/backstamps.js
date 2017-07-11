@@ -76,6 +76,7 @@ var bsImageArray = [
 {year: 2017, filename: "2017_sponge", description: "Spongeware", type: "S"}
 ]
 var $yearContainer = $("#yearContainer")
+var liveImgPrefix = (window.location.href.indexOf("emmabridgewater.co.uk") != -1) ? "https://www.emmabridgewater.co.uk/content/ebiz/eb/" : ""
 var bsImageArray
 var yearArray = []
 var years
@@ -150,7 +151,7 @@ function createGrid(){
 				$("<img />")
 				.addClass("bsImg")
 				.attr({
-					src: "images/backstamps/s/"+bsCell.filename+"_s.jpg",
+					src: liveImgPrefix + "images/backstamps/s/"+bsCell.filename+"_s.jpg",
 					alt: bsCell.description
 					})
 				)
@@ -289,7 +290,7 @@ function clickImg(img){
 				.load(function(){
 					$(this).fadeIn(200)
 				})
-				.attr("src","images/backstamps/"+$(this).attr("data-img")+".jpg")
+				.attr("src",liveImgPrefix + "images/backstamps/"+$(this).attr("data-img")+".jpg")
 				)
 
 			$bsDataDetail = $("<div />")
