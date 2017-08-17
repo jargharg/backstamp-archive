@@ -48,15 +48,12 @@
     .filter {
         width: 25%;
         float: left;
+        font-size: 1em;
         
         &__container {
             height: 50px;
             width: 100%;
             margin-bottom: 5px;
-        }
-        
-        &__option {
-            font-size: 1em;
         }
         
         &__title {
