@@ -47,11 +47,11 @@ function countYears(arrayToCount) {
 	return arrayToCount[arrayToCount.length - 1].year - arrayToCount[0].year + 1
 }
 
-// create yearCells and imgCells and append to gridContainer
+// create cell__years and cell__images and append to gridContainer
 function createGrid() {
 	for (var i = 0; i < years; i++) {
 		var $newYearCell = $("<li />")
-			.addClass("gridCell yearCell visYearCell")
+			.addClass("cell cell__year cell__year--visible")
 			.append(
 				$("<text />")
 					.html(
@@ -59,7 +59,7 @@ function createGrid() {
 							i +
 							"<i class='icon-right-marker icon-large'></i>"
 					)
-					.addClass("yearNum centreCell")
+					.addClass("cell__year__number cell--center")
 			)
 		yearArray.push($newYearCell)
 
@@ -74,8 +74,8 @@ function createGrid() {
 		}
 
 		currentYearBsArray.forEach(function(bsCell) {
-			var $newImgCell = $("<li />")
-				.addClass("gridCell imgCell")
+			var $newcell__image = $("<li />")
+				.addClass("cell cell__image")
 				.attr({
 					"data-display": 1,
 					"data-img": bsCell.filename,
@@ -83,7 +83,7 @@ function createGrid() {
 					"data-desc": bsCell.description
 				})
 				.append(
-					$("<img />").addClass("bsImg").attr({
+					$("<img />").addClass("backstamp").attr({
 						src:
 							liveImgPrefix +
 							"images/backstamps/s/" +
@@ -92,7 +92,7 @@ function createGrid() {
 						alt: bsCell.description
 					})
 				)
-			$newYearCell.push($newImgCell) // adds image cell to array with current year window at the start
+			$newYearCell.push($newcell__image) // adds image cell to array with current year window at the start
 		})
 	}
 
@@ -107,43 +107,43 @@ function createGrid() {
 	$gridContainer.after($("<div id = 'detailHeight'></div>")) // allows us to get height of detail__container--expanded
 }
 
-// load detail__containers and spacerCells
+// load detail__containers and cell__spacers
 function addDetailContainers() {
 	$(".detail__container").remove()
-	$(".spacerCell").parent().remove()
+	$(".cell__spacer").parent().remove()
 
-	$(".activeBsImg").removeClass("activeBsImg")
-	var $gridCells = $(".gridCell")
-	for (var i = 0; i < $gridCells.length; i++) {
-		var $currentCell = $($gridCells[i])
+	$(".backstamp__active").removeClass("backstamp__active")
+	var $cells = $(".cell")
+	for (var i = 0; i < $cells.length; i++) {
+		var $currentCell = $($cells[i])
 		if (
 			$gridContainer.offset().left +
 				$gridContainer.width() -
 				$currentCell.offset().left -
 				$currentCell.width() <
 				30 ||
-			i === $gridCells.length - 1
+			i === $cells.length - 1
 		) {
-			if ($currentCell.hasClass("visYearCell")) {
+			if ($currentCell.hasClass("cell__year--visible")) {
 				$currentCell.before(
 					($currentCell = $("<div />")
-						.addClass("gridCell")
-						.append($("<div />").addClass("spacerCell centreCell")))
+						.addClass("cell")
+						.append($("<div />").addClass("cell__spacer cell--center")))
 				)
 			}
 			$currentCell.after($("<div />").addClass("detail__container"))
 		}
 	}
 	// square cells
-	$(".gridCell").height($(".gridCell").width())
+	$(".cell").height($(".cell").width())
 }
 
-// select next or previous imgCell based on input "L" or "R"
+// select next or previous cell__image based on input "L" or "R"
 function navigateCells(direction) {
-	var $parentCell = $(".activeBsImg").parent()
+	var $parentCell = $(".backstamp__active").parent()
 	direction === "L"
-		? $parentCell.prevAll(".imgCell:visible").first().click()
-		: $parentCell.nextAll(".imgCell:visible").first().click()
+		? $parentCell.prevAll(".cell__image:visible").first().click()
+		: $parentCell.nextAll(".cell__image:visible").first().click()
 }
 
 // navigate cells using arrow keys
@@ -177,17 +177,17 @@ function loadOptions() {
 		// fades out gridContainer while cells are shown/hidden
 		$gridContainer.css("opacity", 0).delay(110).queue(function(next) {
 			if (filter) {
-				// if a filter has been selected, checks if imgCell matches the filter type; displays cell if so, hides cell if not
-				$(".imgCell[data-bsType=" + filter + "]").attr(
+				// if a filter has been selected, checks if cell__image matches the filter type; displays cell if so, hides cell if not
+				$(".cell__image[data-bsType=" + filter + "]").attr(
 					"data-display",
 					1
 				)
-				$(".imgCell[data-bsType!=" + filter + "]")
+				$(".cell__image[data-bsType!=" + filter + "]")
 					.hide()
 					.attr("data-display", 0)
 			} else {
 				// if view all clicked, set all cells to be displayed
-				$(".imgCell").attr("data-display", 1)
+				$(".cell__image").attr("data-display", 1)
 			}
 			reloadGrid()
 			$gridContainer.css("opacity", 1)
@@ -196,7 +196,7 @@ function loadOptions() {
 	})
 }
 
-// show/hide imgCells of selected year based on filter
+// show/hide cell__images of selected year based on filter
 function loadImgs(yearToDisplay) {
 	var $firstWindow = $(yearToDisplay[0])
 	$firstWindow.children().html($firstWindow.children().html().substring(0, 4))
@@ -212,9 +212,9 @@ function loadImgs(yearToDisplay) {
 	}
 
 	if (validImages === 0) {
-		$firstWindow.removeClass("visYearCell")
+		$firstWindow.removeClass("cell__year--visible")
 	} else {
-		$firstWindow.addClass("visYearCell")
+		$firstWindow.addClass("cell__year--visible")
 		$firstWindow
 			.children()
 			.html(
@@ -230,12 +230,12 @@ function clickImg(img) {
 		// find next detail__container
 		var $nextDetailContainer = $(this).nextAll(".detail__container").first()
 
-		if ($(this).children().hasClass("activeBsImg")) {
+		if ($(this).children().hasClass("backstamp__active")) {
 			// if clicking on currently selected cell
 			hideDetails()
 		} else {
-			var prevBsImgTop = $(".activeBsImg")[0]
-				? $(".activeBsImg").offset().top
+			var prevBsImgTop = $(".backstamp__active")[0]
+				? $(".backstamp__active").offset().top
 				: null
 			hideDetails()
 
@@ -278,7 +278,7 @@ function clickImg(img) {
 			if ($(window).width() < 600)
 				$bsImgDetail.insertBefore($bsDataDetail)
 
-			$(this).children().addClass("activeBsImg")
+			$(this).children().addClass("backstamp__active")
 
 			// scroll to top of selected cell
 			var currentBsImgTop = $(this).children().offset().top - 8
@@ -296,7 +296,7 @@ function clickImg(img) {
 // hide expanded detail__container and un-highlights active img
 function hideDetails() {
 	$(".detail__container--expanded").removeClass("detail__container--expanded").empty()
-	$(".activeBsImg").removeClass("activeBsImg")
+	$(".backstamp__active").removeClass("backstamp__active")
 }
 
 // add navigation buttons to detail__container
@@ -306,7 +306,7 @@ function addNavigation() {
 		.append(
 			$("<span />")
 				.addClass("detail__button detail__button__nav")
-				.html("<i class='icon-left-marker icon-large'>left</i>")
+				.html("<i class='icon-left-marker icon-large'>L</i>")
 				.click(function() {
 					navigateCells("L")
 				})
@@ -314,7 +314,7 @@ function addNavigation() {
 		.append(
 			$("<span />")
 				.addClass("detail__button detail__button__nav")
-				.html("<i class='icon-right-marker icon-large'>right</i>")
+				.html("<i class='icon-right-marker icon-large'>R</i>")
 				.click(function() {
 					navigateCells("R")
 				})
@@ -322,7 +322,7 @@ function addNavigation() {
 		.append(
 			$("<span />")
 				.addClass("detail__button detail__button__close")
-				.html("<i class='icon-close icon-large'>close</i>")
+				.html("<i class='icon-close icon-large'>X</i>")
 				.click(hideDetails)
 		)
 	return $newNav
@@ -334,10 +334,10 @@ function reloadGrid() {
 		loadImgs(year)
 	})
 	addDetailContainers()
-	$(".spacerCell").css("padding", 0)
+	$(".cell__spacer").css("padding", 0)
 }
 
-// Re-draw yearCells in IE to fix alignment issues
+// Re-draw cell__years in IE to fix alignment issues
 function IERefresh() {
 	if (
 		navigator.appVersion.indexOf("MSIE") > 0 ||
