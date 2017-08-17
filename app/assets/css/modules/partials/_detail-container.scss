@@ -8,6 +8,7 @@
         transition: all 0.2s;
         position: relative;
         overflow: hidden;
+
         &--expanded {
             height: 450px;
             border-top: 1px solid $color-1-l2;
@@ -28,12 +29,15 @@
         padding: 0 5px;
         cursor: pointer;
         transition: 0.2s;
+
         &:hover {
             color: $color-1-d1;
         }
+        
         &__nav {
             float: left;
         }
+        
         &__close {
             float: right;
         }
@@ -46,6 +50,7 @@
         padding: 30px;
         float: right;
         box-sizing: border-box;
+        
         img {
             width: 100%;
             height: 100%;
@@ -64,11 +69,13 @@
         box-sizing: border-box;
         -webkit-font-smoothing: antialiased;
         text-shadow: rgba(0, 0, 0, .01) 0 0 1px;
+        
         &__year {
             font-size: 5em;
             letter-spacing: 0.1em;
             padding-left: 0.1em;
         }
+        
         &__name {
             padding-top: 10px;
             font-size: 2em;
@@ -85,9 +92,11 @@
     .detail__container--expanded {
         height: 350px;
     }
+
     .detail__data {
         padding-top: 100px;
     }
+    
     #detailHeight {
         height: 350px;
     }
@@ -97,9 +106,11 @@
     .detail__container--expanded {
         height: 550px;
     }
+    
     .detail__data {
         padding-top: 20px;
     }
+    
     .detail__image {
         display: block;
         float: none;
@@ -108,23 +119,28 @@
         width: 100%;
         margin: 0 auto;
     }
+    
     .detail__data {
         display: block;
         float: none;
         width: 100%;
         padding-top: 0;
         height: 50px;
+        
         &__year {
             font-size: 2em;
             display: inline;
+            
             &:after {
                 content: " - ";
             }
         }
+        
         &__name {
             display: inline;
         }
     }
+    
     #detailHeight {
         height: 550px;
     }

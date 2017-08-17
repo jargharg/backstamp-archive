@@ -12,9 +12,11 @@
     &__year {
         color: $color-1-l2;
         font-size: 150%;
+
         &--visible {
             color: $color-1 !important;
         }
+        
         &__number {
             letter-spacing: 4px;
             i.icon-right-marker.icon-large {

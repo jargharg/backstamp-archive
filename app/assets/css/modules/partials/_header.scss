@@ -6,17 +6,21 @@
     background-color: $color-1;
     user-select: none;
     transition: .1s;
+
     &__title {
         display: inline-block;
         height: 100%;
+
         img {
             height: 40px;
             width: 353px;
         }
+
         h1 {
             display: none;
         }
     }
+
     button {
         height: 100%;
         line-height: 100%;
@@ -33,12 +37,14 @@
         height: 95px;
         margin-bottom: 5px;
         padding: 0;
+
         &__title {
             display: block;
             height: auto;
             width: 100%;
             margin-bottom: 5px;
             text-align: center;
+
             img {
                 max-width: 100%;
                 image-rendering: -moz-crisp-edges;
