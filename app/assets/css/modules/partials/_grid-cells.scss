@@ -16,7 +16,7 @@
         &--visible {
             color: $color-1 !important;
         }
-        
+
         &__number {
             letter-spacing: 4px;
             i.icon-right-marker.icon-large {
@@ -29,7 +29,7 @@
     &__image {
         background-color: white;
         cursor: pointer;
-        &> .backstamp {
+        & > .backstamp {
             max-height: 99%;
             max-width: 99%;
             box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.2);

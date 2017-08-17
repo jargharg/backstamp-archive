@@ -112,7 +112,7 @@ function addDetailContainers() {
 	$(".detail__container").remove()
 	$(".cell__spacer").parent().remove()
 
-	$(".backstamp__active").removeClass("backstamp__active")
+	$(".backstamp--active").removeClass("backstamp--active")
 	var $cells = $(".cell")
 	for (var i = 0; i < $cells.length; i++) {
 		var $currentCell = $($cells[i])
@@ -140,7 +140,7 @@ function addDetailContainers() {
 
 // select next or previous cell__image based on input "L" or "R"
 function navigateCells(direction) {
-	var $parentCell = $(".backstamp__active").parent()
+	var $parentCell = $(".backstamp--active").parent()
 	direction === "L"
 		? $parentCell.prevAll(".cell__image:visible").first().click()
 		: $parentCell.nextAll(".cell__image:visible").first().click()
@@ -230,12 +230,12 @@ function clickImg(img) {
 		// find next detail__container
 		var $nextDetailContainer = $(this).nextAll(".detail__container").first()
 
-		if ($(this).children().hasClass("backstamp__active")) {
+		if ($(this).children().hasClass("backstamp--active")) {
 			// if clicking on currently selected cell
 			hideDetails()
 		} else {
-			var prevBsImgTop = $(".backstamp__active")[0]
-				? $(".backstamp__active").offset().top
+			var prevBsImgTop = $(".backstamp--active")[0]
+				? $(".backstamp--active").offset().top
 				: null
 			hideDetails()
 
@@ -278,7 +278,7 @@ function clickImg(img) {
 			if ($(window).width() < 600)
 				$bsImgDetail.insertBefore($bsDataDetail)
 
-			$(this).children().addClass("backstamp__active")
+			$(this).children().addClass("backstamp--active")
 
 			// scroll to top of selected cell
 			var currentBsImgTop = $(this).children().offset().top - 8
@@ -296,7 +296,7 @@ function clickImg(img) {
 // hide expanded detail__container and un-highlights active img
 function hideDetails() {
 	$(".detail__container--expanded").removeClass("detail__container--expanded").empty()
-	$(".backstamp__active").removeClass("backstamp__active")
+	$(".backstamp--active").removeClass("backstamp--active")
 }
 
 // add navigation buttons to detail__container
