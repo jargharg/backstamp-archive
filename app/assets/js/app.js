@@ -104,12 +104,12 @@ function createGrid() {
 			year[j].click(clickImg(year[j]))
 		}
 	})
-	$gridContainer.after($("<div id = 'detailHeight'></div>")) // allows us to get height of detailContainerE
+	$gridContainer.after($("<div id = 'detailHeight'></div>")) // allows us to get height of detail__container--expanded
 }
 
-// load detailContainers and spacerCells
+// load detail__containers and spacerCells
 function addDetailContainers() {
-	$(".detailContainer").remove()
+	$(".detail__container").remove()
 	$(".spacerCell").parent().remove()
 
 	$(".activeBsImg").removeClass("activeBsImg")
@@ -131,7 +131,7 @@ function addDetailContainers() {
 						.append($("<div />").addClass("spacerCell centreCell")))
 				)
 			}
-			$currentCell.after($("<div />").addClass("detailContainer"))
+			$currentCell.after($("<div />").addClass("detail__container"))
 		}
 	}
 	// square cells
@@ -224,11 +224,11 @@ function loadImgs(yearToDisplay) {
 	}
 }
 
-// show/hide detailContainer with content for the img
+// show/hide detail__container with content for the img
 function clickImg(img) {
 	return function() {
-		// find next detailContainer
-		var $nextDetailContainer = $(this).nextAll(".detailContainer").first()
+		// find next detail__container
+		var $nextDetailContainer = $(this).nextAll(".detail__container").first()
 
 		if ($(this).children().hasClass("activeBsImg")) {
 			// if clicking on currently selected cell
@@ -239,9 +239,9 @@ function clickImg(img) {
 				: null
 			hideDetails()
 
-			// create content for detailContainer
+			// create content for detail__container
 			var $bsImgDetail = $("<div />")
-				.addClass("bsImgDetail")
+				.addClass("detail__image")
 				.append(
 					$("<img>").attr(
 						"src",
@@ -253,23 +253,23 @@ function clickImg(img) {
 				)
 
 			var $bsDataDetail = $("<div />")
-				.addClass("bsDataDetail")
+				.addClass("detail__data")
 				.append(
 					$("<div />")
-						.addClass("bsYear")
+						.addClass("detail__data__year")
 						.html($(this).attr("data-img").substring(0, 4))
 				)
 				.append(
 					$("<div />")
-						.addClass("bsName")
+						.addClass("detail__data__name")
 						.html($(this).attr("data-desc"))
 				)
 
-			// expand next detailContainer and append content
+			// expand next detail__container and append content
 			$(this)
-				.nextAll(".detailContainer")
+				.nextAll(".detail__container")
 				.first()
-				.addClass("detailContainerE")
+				.addClass("detail__container--expanded")
 				.append(addNavigation())
 				.append($bsDataDetail.hide().fadeIn(200))
 				.append($bsImgDetail.hide().fadeIn(200))
@@ -293,42 +293,42 @@ function clickImg(img) {
 	}
 }
 
-// hide expanded detailContainer and un-highlights active img
+// hide expanded detail__container and un-highlights active img
 function hideDetails() {
-	$(".detailContainerE").removeClass("detailContainerE").empty()
+	$(".detail__container--expanded").removeClass("detail__container--expanded").empty()
 	$(".activeBsImg").removeClass("activeBsImg")
 }
 
-// add navigation buttons to detailContainer
+// add navigation buttons to detail__container
 function addNavigation() {
 	var $newNav = $("<div />")
-		.addClass("detailNav")
+		.addClass("detail__nav")
 		.append(
 			$("<span />")
-				.addClass("detailBtn detailBtnNav")
-				.html("<i class='icon-left-marker icon-large'></i>")
+				.addClass("detail__button detail__button__nav")
+				.html("<i class='icon-left-marker icon-large'>left</i>")
 				.click(function() {
 					navigateCells("L")
 				})
 		)
 		.append(
 			$("<span />")
-				.addClass("detailBtn detailBtnNav")
-				.html("<i class='icon-right-marker icon-large'></i>")
+				.addClass("detail__button detail__button__nav")
+				.html("<i class='icon-right-marker icon-large'>right</i>")
 				.click(function() {
 					navigateCells("R")
 				})
 		)
 		.append(
 			$("<span />")
-				.addClass("detailBtn detailBtnClose")
-				.html("<i class='icon-close icon-large'></i>")
+				.addClass("detail__button detail__button__close")
+				.html("<i class='icon-close icon-large'>close</i>")
 				.click(hideDetails)
 		)
 	return $newNav
 }
 
-// re-draw cells and detailContainers
+// re-draw cells and detail__containers
 function reloadGrid() {
 	yearArray.forEach(function(year) {
 		loadImgs(year)

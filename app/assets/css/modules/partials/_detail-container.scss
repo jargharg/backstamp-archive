@@ -1,72 +1,78 @@
-.detailContainer {
-    height: 0px;
-    line-height: 1;
-    width: 100%;
-    background-color: $color-1-l2;
-    border-top: 1px solid $color-1-l1;
-    transition: all 0.2s;
-    position: relative;
-    overflow: hidden;
-}
-.detailContainerE {
-    height: 450px;
-    border-top: 1px solid $color-1-l2;
-}
-.detailNav {
-    position: absolute;
-    width: 100%;
-    color: $color-1;
-    font-size: 1.8em;
-    padding: 5px;
-    box-sizing: border-box;
-    user-select: none;
-    .detailBtn {
+.detail {
+    &__container {
+        height: 0px;
+        line-height: 1;
+        width: 100%;
+        background-color: $color-1-l2;
+        border-top: 1px solid $color-1-l1;
+        transition: all 0.2s;
+        position: relative;
+        overflow: hidden;
+        &--expanded {
+            height: 450px;
+            border-top: 1px solid $color-1-l2;
+        }
+    }
+
+    &__nav {
+        position: absolute;
+        width: 100%;
+        color: $color-1;
+        font-size: 1.8em;
+        padding: 5px;
+        box-sizing: border-box;
+        user-select: none;
+    }
+
+    &__button {
         padding: 0 5px;
         cursor: pointer;
         transition: 0.2s;
         &:hover {
             color: $color-1-d1;
         }
+        &__nav {
+            float: left;
+        }
+        &__close {
+            float: right;
+        }
     }
-    .detailBtnNav {
-        float: left;
-    }
-    .detailBtnClose {
+
+    &__image {
+        max-height: 450px;
+        width: 50%;
+        max-width: 450px;
+        padding: 30px;
         float: right;
+        box-sizing: border-box;
+        img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            box-shadow: 0 0 0 1px $color-1-d2 !important;
+        }
     }
-}
-.bsImgDetail {
-    max-height: 450px;
-    width: 50%;
-    max-width: 450px;
-    padding: 30px;
-    float: right;
-    box-sizing: border-box;
-    img {
-        width: 100%;
+
+    &__data {
+        float: right;
+        width: 50%;
         height: 100%;
-        border-radius: 50%;
-        box-shadow: 0 0 0 1px $color-1-d2 !important;
-    }
-}
-.bsDataDetail {
-    float: right;
-    width: 50%;
-    height: 100%;
-    padding: 150px 20px 20px 20px;
-    text-align: center;
-    color: $color-1-d2;
-    box-sizing: border-box;
-    -webkit-font-smoothing: antialiased;
-    text-shadow: rgba(0, 0, 0, .01) 0 0 1px;
-    .bsYear {
-        font-size: 5em;
-        letter-spacing: 0.1em;
-        padding-left: 0.1em;
-    }
-    .bsName {
-        padding-top: 10px;
-        font-size: 2em;
+        padding: 150px 20px 20px 20px;
+        text-align: center;
+        color: $color-1-d2;
+        box-sizing: border-box;
+        -webkit-font-smoothing: antialiased;
+        text-shadow: rgba(0, 0, 0, .01) 0 0 1px;
+        &__year {
+            font-size: 5em;
+            letter-spacing: 0.1em;
+            padding-left: 0.1em;
+        }
+        &__name {
+            padding-top: 10px;
+            font-size: 2em;
+        }
     }
 }
 
@@ -76,10 +82,10 @@
 }
 
 @media only screen and (max-width: $mediumWidth) {
-    .detailContainerE {
+    .detail__container--expanded {
         height: 350px;
     }
-    .bsDataDetail {
+    .detail__data {
         padding-top: 100px;
     }
     #detailHeight {
@@ -88,16 +94,13 @@
 }
 
 @media only screen and (max-width: $smallWidth) and (orientation: portrait) {
-    .detailContainerE {
-        height: 550px;
-        .bsDataDetail {
-            padding-top: 20px;
-        }
-    }
-    #detailHeight {
+    .detail__container--expanded {
         height: 550px;
     }
-    .bsImgDetail {
+    .detail__data {
+        padding-top: 20px;
+    }
+    .detail__image {
         display: block;
         float: none;
         padding: 20px;
@@ -105,21 +108,24 @@
         width: 100%;
         margin: 0 auto;
     }
-    .bsDataDetail {
+    .detail__data {
         display: block;
         float: none;
         width: 100%;
         padding-top: 0;
         height: 50px;
-        .bsYear {
+        &__year {
             font-size: 2em;
             display: inline;
             &:after {
                 content: " - ";
             }
         }
-        .bsName {
+        &__name {
             display: inline;
         }
+    }
+    #detailHeight {
+        height: 550px;
     }
 }
