@@ -1,0 +1,14 @@
+#gridContainer {
+    padding: 0 8% 30px;
+    margin: 10px auto 0;
+    opacity: 1;
+    transition: .1s;
+    line-height: 0;
+}
+
+@media only screen and (max-width: $mediumWidth) {
+    #gridContainer {
+        width: 90%;
+        padding: 0;
+    }
+}

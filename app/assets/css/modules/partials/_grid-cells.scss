@@ -1,0 +1,67 @@
+.gridCell {
+    width: (99%/8);
+    display: inline-block;
+    position: relative;
+    padding: 1%;
+    text-align: center;
+    user-select: none;
+    cursor: default;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+.yearCell {
+    color: $color-1-l2;
+    font-size: 150%;
+    .yearNum {
+        letter-spacing: 4px;
+        i.icon-right-marker.icon-large {
+            top: -2px;
+            position: relative;
+        }
+    }
+}
+.visYearCell {
+    color: $color-1 !important;
+}
+.imgCell {
+    background-color: white;
+    cursor: pointer;
+    .bsImg {
+        max-height: 99%;
+        max-width: 99%;
+        box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.2);
+        border-radius: 50%;
+        overflow: hidden;
+        transition: 0.2s;
+        &:hover {
+            box-shadow: 0 0 0 2px $color-1;
+        }
+    }
+    .activeBsImg {
+        box-shadow: 0 0 0 2px $color-1;
+    }
+}
+.spacerCell {
+    background-color: $color-1;
+    height: 10px;
+    width: 10px;
+    box-sizing: border-box;
+    border-radius: 50%;
+}
+.centreCell {
+    display: inline-block;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+@media only screen and (max-width: $mediumWidth) {
+    .gridCell {
+        width: 25%;
+        padding: 2%;
+        margin: 5px 0;
+    }
+    .yearCell {
+        font-size: 120%;
+    }
+}

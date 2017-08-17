@@ -1,0 +1,15 @@
+@import "modules/global/_mixins";
+@import "modules/global/_eb-style-resets";
+@import "modules/partials/_body";
+
+.bs-container {
+	max-width: 1228px;
+	margin: 0 auto;
+	background: white;
+
+	@import "modules/partials/_header";
+	@import "modules/partials/_blurb";
+	@import "modules/partials/_grid-container";
+	@import "modules/partials/_grid-cells";
+	@import "modules/partials/_detail-container";
+}
