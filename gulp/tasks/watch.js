@@ -1,6 +1,6 @@
 var gulp = require("gulp"),
 	watch = require("gulp-watch"),
-	browserSync = require("browser-sync").create();
+	browserSync = require("browser-sync").create()
 
 gulp.task("watch", function(){
 	browserSync.init({
@@ -8,26 +8,25 @@ gulp.task("watch", function(){
 		server: {
 			baseDir: "./app"
 		}
-	});
+	})
 	
 	watch("./app/index.html", function() {
-		browserSync.reload();
-	});
+		browserSync.reload()
+	})
 	
 	watch("./app/assets/css/**/*.scss", function(){
-		gulp.start("cssInject");
-	});
+		gulp.start("cssInject")
+	})
 
 	watch("./app/assets/js/**/*.js", function(){
-		gulp.start("scriptsRefresh");
-	});
-});
+		gulp.start("scriptsRefresh")
+	})
+})
 
 gulp.task("cssInject", ["styles"], function(){
-	return gulp.src("./app/temp/assets/css/styles.css")
-	.pipe(browserSync.reload());
-});
+	browserSync.reload()
+})
 
 gulp.task("scriptsRefresh", ["scripts"], function(){
-	browserSync.reload();
-});
+	browserSync.reload()
+})
