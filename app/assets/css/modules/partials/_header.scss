@@ -1,4 +1,4 @@
-#bsHeader {
+.header {
     width: 100%;
     padding: 0 8%;
     box-sizing: border-box;
@@ -6,12 +6,15 @@
     background-color: $color-1;
     user-select: none;
     transition: .1s;
-    .bsTitle {
+    &__title {
         display: inline-block;
         height: 100%;
         img {
             height: 40px;
             width: 353px;
+        }
+        h1 {
+            display: none;
         }
     }
     button {
@@ -23,52 +26,14 @@
         transition: .1s;
         background-color: $color-1;
     }
-    .filterContainer {
-        height: 100%;
-        float: right;
-        width: 50%;
-        overflow: hidden;
-        transition: .1s;
-        text-align: right;
-        .filterTitle {
-            cursor: default;
-        }
-        .filterList {
-            border: 0px solid transparent;
-            box-shadow: none !important;
-            padding: 0px 15px;
-        }
-        .filterOption {
-            cursor: pointer;
-            &:hover {
-                background-color: $color-1-d1;
-            }
-            &:active {
-                background-color: $color-1-d2;
-            }
-        }
-        .filterArrow {
-            margin-left: 5px;
-            display: inline-block;
-            transition: .1s;
-            width: 0;
-            height: 0;
-            border-top: 5px solid transparent;
-            border-bottom: 5px solid transparent;
-            border-left: 9px solid white;
-        }
-        .filterActive {
-            background-color: $color-1-d1;
-        }
-    }
 }
 
 @media only screen and (max-width: 840px) {
-    #bsHeader {
+    .header {
         height: 95px;
         margin-bottom: 5px;
         padding: 0;
-        .bsTitle {
+        &__title {
             display: block;
             height: auto;
             width: 100%;
@@ -81,21 +46,6 @@
                 image-rendering: -webkit-optimize-contrast;
                 image-rendering: crisp-edges;
                 -ms-interpolation-mode: nearest-neighbor;
-            }
-        }
-        .filterContainer {
-            height: 50px;
-            width: 100%;
-            margin-bottom: 5px;
-            .filterOption {
-                font-size: 1em;
-            }
-            .filterTitle {
-                display: none;
-            }
-            .filterList {
-                width: 25%;
-                float: left;
             }
         }
     }

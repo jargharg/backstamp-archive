@@ -159,19 +159,19 @@ function addKBNavigation() {
 
 // handle use of top filters
 function loadOptions() {
-	$(".filterOption").click(function() {
+	$(".filter__option").click(function() {
 		var $selectedFilter = $(this)
 
-		if ($selectedFilter.hasClass("filterActive")) {
+		if ($selectedFilter.hasClass("filter--active")) {
 			// if active filter button has been clicked on, remove filters
 			filter = null
-			$selectedFilter.removeClass("filterActive")
-			$("#viewAllButton").addClass("filterActive")
+			$selectedFilter.removeClass("filter--active")
+			$("#viewAllButton").addClass("filter--active")
 		} else {
 			// checks which filter button has been clicked on
 			filter = $selectedFilter.attr("data-filterType")
-			$(".filterActive").removeClass("filterActive")
-			$selectedFilter.addClass("filterActive")
+			$(".filter--active").removeClass("filter--active")
+			$selectedFilter.addClass("filter--active")
 		}
 
 		// fades out gridContainer while cells are shown/hidden
