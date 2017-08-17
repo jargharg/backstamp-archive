@@ -5,11 +5,11 @@ var gulp = require("gulp"),
 	rev = require("gulp-rev"),
 	cssnano = require("gulp-cssnano"),
 	uglify = require("gulp-uglify"),
-	browserSync = require("browser-sync").create();
+	browserSync = require("browser-sync").create()
 
 gulp.task("deleteDocsFolder", function() {
-	return del("./docs");
-});
+	return del("./docs")
+})
 
 gulp.task("copyGeneralFiles", ["deleteDocsFolder"], function() {
 	var pathsToCopy = [
@@ -20,10 +20,10 @@ gulp.task("copyGeneralFiles", ["deleteDocsFolder"], function() {
 	"!./app/assets/images/**",
 	"!./app/temp",
 	"!./app/temp/**"
-	];
+	]
 	return gulp.src(pathsToCopy)
-	.pipe(gulp.dest("./docs"));
-});
+	.pipe(gulp.dest("./docs"))
+})
 
 gulp.task("optimiseImages", ["deleteDocsFolder"], function() {
 	return gulp.src(["./app/assets/images/**/*", "!.app/assets/images/icons", "!.app/assets/images/icons/**/*"])
@@ -36,8 +36,8 @@ gulp.task("optimiseImages", ["deleteDocsFolder"], function() {
 })
 
 gulp.task("useminTrigger", ["deleteDocsFolder"], function(){
-	gulp.start("usemin");
-});
+	gulp.start("usemin")
+})
 
 gulp.task("usemin", ["styles", "scripts"], function() {
 	return gulp.src("./app/index.html")
@@ -45,7 +45,7 @@ gulp.task("usemin", ["styles", "scripts"], function() {
 		css: [function(){return rev()}, function(){return cssnano()}],
 		js: [function(){return rev()}, function(){return uglify()}]
 	}))
-	.pipe(gulp.dest("./docs"));
-});
+	.pipe(gulp.dest("./docs"))
+})
 
-gulp.task("build", ["deleteDocsFolder", "optimiseImages", "useminTrigger", "copyGeneralFiles"]);
+gulp.task("build", ["deleteDocsFolder", "optimiseImages", "useminTrigger", "copyGeneralFiles"])
