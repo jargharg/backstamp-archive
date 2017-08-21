@@ -9,5 +9,8 @@ Staging: <a href="http://jarodhargreav.es/backstamp-archive/">jarodhargreav.es/b
 ## Built With
 * HTML5
 * SCSS
-* Javascript  
-* JQuery 1.10.2
+* Javascript ES6
+* JQuery
+* Babel
+* Gulp
+* Webpack
